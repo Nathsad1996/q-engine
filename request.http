@@ -1,0 +1,210 @@
+@API = http://localhost:5000/
+@KEY = 6624d08f-988f-4deb-bfb2-4072ffe1fe53
+
+###
+POST {{API}}user/login
+Content-Type: application/json
+
+{
+    "email": "bernynathgmail.com",
+    "password": "Kokilomu1996."
+}
+
+### 
+POST {{API}}user/register
+Content-Type: application/json
+
+{
+    "name": "Nathan Sadala",
+    "email": "test@gmail.com",
+    "password": "Kokilomu1996."
+}
+
+###
+
+
+POST {{API}}quiz?key={{KEY}}
+Content-Type: application/json
+
+{
+    "title": "general knowledges",
+    "questions": [
+        {
+            "questionText": "Which is the capital of USA ?", 
+            "type":"multiple", 
+            "answers": 
+            [
+                {
+                    "answerText":"Washington D.C.", 
+                    "isCorrect":true
+                },
+                {
+                    "answerText":"Boston", 
+                    "isCorrect":false
+                },                {
+                    "answerText":"Chicago", 
+                    "isCorrect":false
+                },
+                                {
+                    "answerText":"Los Angeles", 
+                    "isCorrect":false
+                }
+            ]
+        },
+                {
+            "questionText": "China is located in which continent ?", 
+            "type":"single", 
+            "answers": 
+            [
+                {
+                    "answerText":"Asia", 
+                    "isCorrect":true
+                },
+                {
+                    "answerText":"Africa", 
+                    "isCorrect":false
+                }
+            ]
+        },
+                {
+            "questionText": "is Elon Musk the creator of SpaceX ?", 
+            "type":"multiple", 
+            "answers": 
+            [
+                {
+                    "answerText":"Yes", 
+                    "isCorrect":true
+                },
+                {
+                    "answerText":"No", 
+                    "isCorrect":false
+                }
+            ]
+        }
+    ]
+}
+
+
+###
+
+
+GET {{API}}quiz
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+###
+
+
+GET {{API}}quiz/62b05e3d8f75e4613474d03d
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+
+###
+
+DELETE {{API}}quiz/62b05e3d8f75e4613474d03d
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+###
+
+
+GET {{API}}quiz/edit/62b05e3d8f75e4613474d03d
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+
+###
+PUT {{API}}quiz/edit
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+{
+    "quizId": "62a8adec0ee0066f438f2606",
+    "title":"Physiques",
+    "questions": [
+        {
+          "questionText": "E=mc² est crée par qui ?",
+          "type": "multiple",
+          "answers": [
+            {
+              "answerText": "Einstein",
+              "isCorrect": true
+            },
+            {
+              "answerText": "Gauss",
+              "isCorrect": false
+            },
+            {
+              "answerText": "Newton",
+              "isCorrect": false
+            },
+            {
+              "answerText": "Abraham Lincoln",
+              "isCorrect": false
+            }
+          ]
+        }
+    ]
+}
+
+###
+POST {{API}}quiz/publish
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+{
+    "quizId": "62b05e3d8f75e4613474d03d"
+}
+
+###
+GET {{API}}quiz/score/62b05e3d8f75e4613474d03d
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+###
+GET {{API}}quiz/solutions
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+
+###
+
+GET {{API}}quiz/stats
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+###
+
+POST {{API}}quiz/solution
+Content-Type: application/json
+Authorization: Basic {{KEY}}
+
+{
+    "quizId": "62b05e3d8f75e4613474d03d", 
+    "answers": [
+        {
+            "questionId": "62b05e3d8f75e4613474d03f", 
+            "response": 
+            [
+                "Washington D.C."
+            ]
+        },
+        {
+            "questionId": "62b05e3d8f75e4613474d044", 
+            "response": 
+            [
+                "Asia"
+            ]
+        },
+        {
+            "questionId": "62b05e3d8f75e4613474d047", 
+            "response": 
+            [
+                "No"
+            ]
+        }
+    ]
+}
+
+
